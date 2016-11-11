@@ -19,9 +19,9 @@ except Exception as e:
 
 PROVIDER_NAME = getattr(SMS.get('PROVIDER'), 'NAME', '')
 PROVIDER_DOMAIN = getattr(SMS.get('PROVIDER'), 'DOMAIN', '')
-PROVIDER_USERNAME = getattr(SMS('PROVIDER'), 'USERNAME', '')
-PROVIDER_PASSWORD = getattr(SMS('PROVIDER'), 'PASSWORD', '')
-PROVIDER_APP = getattr(SMS('PROVIDER'), 'APP', '')
+PROVIDER_USERNAME = getattr(SMS.get('PROVIDER'), 'USERNAME', '')
+PROVIDER_PASSWORD = getattr(SMS.get('PROVIDER'), 'PASSWORD', '')
+PROVIDER_APP = getattr(SMS.get('PROVIDER'), 'APP', '')
 
 
 class SMSProvider(object):

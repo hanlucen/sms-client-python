@@ -130,6 +130,6 @@ SMS = {
     },
     'CAPTCHA': {
         'MOBILE_CAPTCHA_CHCHE_PATH': '',
-        'MOBILE_CAPTCHA_VALID_DURATION': ''
+        'MOBILE_CAPTCHA_VALID_DURATION': '',
     }
 }
