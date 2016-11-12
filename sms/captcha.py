@@ -14,19 +14,18 @@ import logging
 logger = logging.getLogger('default')
 
 try:
-    SMS = settings.SMS
+    MOBILE_CAPTCHA = settings.SMS.get('MOBILE_CAPTCHA')
 except Exception as e:
     logger.error('settings has not SMS config')
     raise e
 
-MOBILE_CAPTCHA_CHACE_PATH = getattr(
-    SMS.get('MOBILE_CAPTCHA'),
-    'MOBILE_CAPTCHA_CHACE_PATH',
-    'send_mobile_captcha'
+MOBILE_CAPTCHA_CHACE_PATH = MOBILE_CAPTCHA.get(
+    'MOBILE_CAPTCHA_CHACE_PATH', 'send_mobile_captcha'
     )
 
-MOBILE_CAPTCHA_VALID_DURATION = getattr(
-    SMS.get('MOBILE_CAPTCHA'), 'MOBILE_CAPTCHA_VALID_DURATION', 60 * 10)
+MOBILE_CAPTCHA_VALID_DURATION = MOBILE_CAPTCHA.get(
+    'MOBILE_CAPTCHA_VALID_DURATION', 60 * 10
+    )
 
 
 def create_random_string(
@@ -37,8 +36,11 @@ def create_random_string(
         raw_string = string.digits
     else:
         raw_string = string.ascii_letters + string.digits
-    return ''.join(random.sample(filter((
-        lambda x: False if x in filters else True), raw_string), length), '')
+    print(raw_string)
+    print([x for x in raw_string if x not in filters])
+    return ''.join(random.sample(
+        [x for x in raw_string if x not in filters], length)
+        )
 
 serie_hour_map = {
     0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G',

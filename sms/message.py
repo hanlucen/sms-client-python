@@ -12,16 +12,10 @@ import logging
 logger = logging.getLogger('default')
 
 try:
-    SMS = settings.SMS
+    PROVIDER = settings.SMS.get('PROVIDER')
 except Exception as e:
     logger.error('settings has not SMS config')
     raise e
-
-PROVIDER_NAME = getattr(SMS.get('PROVIDER'), 'NAME', '')
-PROVIDER_DOMAIN = getattr(SMS.get('PROVIDER'), 'DOMAIN', '')
-PROVIDER_USERNAME = getattr(SMS.get('PROVIDER'), 'USERNAME', '')
-PROVIDER_PASSWORD = getattr(SMS.get('PROVIDER'), 'PASSWORD', '')
-PROVIDER_APP = getattr(SMS.get('PROVIDER'), 'APP', '')
 
 
 class SMSProvider(object):
@@ -30,19 +24,19 @@ class SMSProvider(object):
         self.provider = self._create()
 
     def _create(self):
-        if PROVIDER_NAME == 'YunXin':
+        if PROVIDER.get('NAME', '').lower() == 'yunxin':
             return YunXinProvider(
-                PROVIDER_DOMAIN,
-                PROVIDER_USERNAME,
-                PROVIDER_PASSWORD,
-                PROVIDER_APP
+                PROVIDER.get('DOMAIN', ''),
+                PROVIDER.get('USERNAME', ''),
+                PROVIDER.get('PASSWORD', ''),
+                PROVIDER.get('APP', '')
                 )
-        elif PROVIDER_NAME == 'YiMei':
+        elif PROVIDER.get('NAME', '').lower() == 'yimei':
             return YiMeiProvider(
-                PROVIDER_DOMAIN,
-                PROVIDER_USERNAME,
-                PROVIDER_PASSWORD,
-                PROVIDER_APP
+                PROVIDER.get('DOMAIN', ''),
+                PROVIDER.get('USERNAME', ''),
+                PROVIDER.get('PASSWORD', ''),
+                PROVIDER.get('APP', '')
                 )
         else:
             logger.error('provider name are not supported')
