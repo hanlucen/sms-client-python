@@ -10,7 +10,7 @@ README = open(os.path.join(here, 'Readme.md')).read()
 
 requires = [
     'requests>=2.7',
-    'https://github.com/hanlucen/sms-client-python/archive/master.zip'
+    'https://github.com/hanlucen/sms-provider-python/archive/master.zip'
 ]
 
 includes = (
