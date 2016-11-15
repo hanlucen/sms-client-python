@@ -10,7 +10,6 @@ README = open(os.path.join(here, 'Readme.md')).read()
 
 requires = [
     'django',
-    'https://github.com/hanlucen/sms-provider-python/archive/master.zip'
 ]
 
 includes = (
