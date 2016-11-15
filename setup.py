@@ -26,5 +26,5 @@ setup(
     long_description=README,
     author="zhumengyuan",
     license="BSD",
-    url=""
+    url="https://github.com/hanlucen/sms-provider-python"
 )
