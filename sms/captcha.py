@@ -36,8 +36,6 @@ def create_random_string(
         raw_string = string.digits
     else:
         raw_string = string.ascii_letters + string.digits
-    print(raw_string)
-    print([x for x in raw_string if x not in filters])
     return ''.join(random.sample(
         [x for x in raw_string if x not in filters], length)
         )
